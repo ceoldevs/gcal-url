@@ -9,6 +9,7 @@
   },
   "author": "smc181002",
   "license": "ISC",
+  "bin": "./build/index.js",
   "dependencies": {
     "@types/inquirer": "^7.3.1",
     "clipboardy": "^2.3.0",

@@ -1,6 +1,7 @@
+#! /usr/bin/env node
 import { prompt } from 'inquirer';
 import { writeSync } from 'clipboardy';
-import terminalLink from 'terminal-link';
+//import terminalLink from 'terminal-link';
 
 interface CalInfo {
   text: string,
