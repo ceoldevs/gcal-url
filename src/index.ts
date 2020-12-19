@@ -1,7 +1,6 @@
 #! /usr/bin/env node
 import { prompt } from 'inquirer';
 import { writeSync } from 'clipboardy';
-//import terminalLink from 'terminal-link';
 
 interface CalInfo {
   text: string,
@@ -11,7 +10,6 @@ interface CalInfo {
 interface URLInfo extends CalInfo {
   action: string
 }
-
 
 let url = new URL('https://calendar.google.com/calendar/render');
 
@@ -23,7 +21,6 @@ const getTodaysDate= (): string => {
   let date = dt.getDate();
   return `${year}-${month}-${date}`
 }
-
 
 prompt([
   {
@@ -38,8 +35,7 @@ prompt([
     message: 'Enter the date [YYYY-MM-DD]',
     default: getTodaysDate(),
   },
-])
-.then(
+]).then(
   (calInfo: CalInfo) => {
     const urlInfo: URLInfo = {action: "TEMPLATE",...calInfo};
     let theDate: string = calInfo.dates;
@@ -50,9 +46,7 @@ prompt([
     url.search = new URLSearchParams({...urlInfo, dates}).toString().replace("%2F", "/");
 
     console.log(url.toString());
-    //console.log(terminalLink("link", url.toString()))
     writeSync(url.toString());
     console.log("URL copied to Clipboard.")
-    //console.log("URL copied to Clipboard. 📋")
   } 
-);
+).catch(err => console.log(err));
