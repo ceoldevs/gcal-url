@@ -20,7 +20,7 @@ var getTodaysDate = function () {
     var year = dt.getFullYear();
     var month = dt.getMonth();
     var date = dt.getDate();
-    return year + "-" + month + "-" + date;
+    return year + "-" + (month + 1) + "-" + date;
 };
 inquirer_1.prompt([
     {
@@ -35,16 +35,13 @@ inquirer_1.prompt([
         message: 'Enter the date [YYYY-MM-DD]',
         default: getTodaysDate(),
     },
-])
-    .then(function (calInfo) {
+]).then(function (calInfo) {
     var urlInfo = __assign({ action: "TEMPLATE" }, calInfo);
     var theDate = calInfo.dates;
     var number = Number(theDate.replace(/\-/g, ""));
     var dates = number + "/" + (number + 1);
     url.search = new URLSearchParams(__assign(__assign({}, urlInfo), { dates: dates })).toString().replace("%2F", "/");
     console.log(url.toString());
-    //console.log(terminalLink("link", url.toString()))
     clipboardy_1.writeSync(url.toString());
     console.log("URL copied to Clipboard.");
-    //console.log("URL copied to Clipboard. 📋")
-});
+}).catch(function (err) { return console.log(err); });

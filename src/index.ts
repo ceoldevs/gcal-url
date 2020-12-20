@@ -19,7 +19,7 @@ const getTodaysDate= (): string => {
   let year = dt.getFullYear();
   let month = dt.getMonth();
   let date = dt.getDate();
-  return `${year}-${month}-${date}`
+  return `${year}-${month+1}-${date}`
 }
 
 prompt([
