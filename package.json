@@ -1,14 +1,14 @@
 {
   "name": "gcal-url",
-  "version": "1.0.1",
-  "description": "",
+  "version": "1.0.2",
+  "description": "A command-line tool to generate calendar event URL in google calendar by prompting the user",
   "main": "index.js",
   "scripts": {
     "start": "ts-node ./src/index.ts",
     "build": "tsc"
   },
   "author": "smc181002",
-  "license": "ISC",
+  "license": "MIT",
   "bin": "./build/index.js",
   "dependencies": {
     "@types/inquirer": "^7.3.1",
